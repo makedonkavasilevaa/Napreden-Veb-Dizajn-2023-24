@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // TODO: write the function;
+    var fib_next = generateFibonacciGenerator();
+
+    function generateFibonacciGenerator() {
+        let a = 1;
+        let b = 2;
+
+        return function () {
+            const result = a;
+            [a, b] = [b, a + b];
+            return result;
+        };
+    }
+    console.log(fib_next())// returns 1
+</script>
+
+</body>
+</html>

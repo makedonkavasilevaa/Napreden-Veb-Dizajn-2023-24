@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function flattenArray(arr) {
+        return arr.reduce((flat, element) => {
+            return flat.concat(Array.isArray(element) ? flattenArray(element) : element);
+        }, []);
+    }
+
+    function difference(arr1, arr2) {
+        const flatArr1 = flattenArray(arr1);
+        const flatArr2 = flattenArray(arr2);
+
+        const uniqueElements = new Set([...flatArr1, ...flatArr2]);
+
+        return Array.from(uniqueElements);
+    }
+</script>
+
+</body>
+</html>

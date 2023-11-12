@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    // Constructor function with arguments
+    function Human(name, age) {
+        // Properties
+        this.name = name;
+        this.age = age;
+        this.stomach = [];
+    }
+
+    // Method to eat food
+    Human.prototype.eat = function (food) {
+        if (this.stomach.length < 10)
+            this.stomach.push(food);
+    };
+
+    // Method to digest
+    Human.prototype.digest = function () {
+        this.stomach = [];
+    };
+
+    // toString prototype
+    Human.prototype.toString = function () {
+        return (`${this.name}, ${this.age}`);
+    };
+
+    function Baby(name, age, toys) {
+        // Call the parent constructor with the current instance as 'this'
+        Human.call(this, name, age);
+
+        // Additional properties specific to Child
+        this.toys = toys;
+    }
+
+    // Set up the prototype chain
+    Baby.prototype = Object.create(Human.prototype);
+
+    // Adding a method specific to Child
+    Baby.prototype.play = function () {
+        return(`Baby ${this.name}, ${this.age} is playing with ${this.toys}`);
+    };
+
+</script>
+
+</body>
+</html>
